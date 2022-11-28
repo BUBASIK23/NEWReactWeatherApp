@@ -4,19 +4,21 @@ import Day from "./Day";
 import React, {useState} from "react";
 import axios from "axios";
 import "./App.css";
+import Forecast from "./Forecast";
 
 export default function App() {
-  let [city,setCity] =useState("")
+  let [city,setCity] =useState(``)
   let [temp, setTemp] = useState (null);
   let [dayMax, setDayMax] = useState (null);
   let [dayMin, setDayMin] = useState (null);
   let [humidity, setHumidity] = useState(null);
   let [wind, setWind] = useState(null);
-  let [desciption, setDesciption] = useState(null);
+  let [description, setDescription] = useState(null);
   let [morning, setMorning]= useState (null);
   let [afternoon, setAfternoon]=useState (null);
   let [evening, setEvening] = useState (null);
   let [night, setNight] = useState (null);
+  let [icon, setIcon] = useState (null)
 
   function displayForecast(response){
     console.log (response.data.daily);
@@ -44,7 +46,8 @@ setDayMax (Math.round (response.data.main.temp_max));
 setDayMin (Math.round (response.data.main.temp_min));
 setHumidity(Math.round(response.data.main.humidity));
 setWind(Math.round(response.data.wind.speed));
-setDesciption(response.data.weather[0].description);
+setDescription(response.data.weather[0].description);
+setIcon (`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`)
 //setCity (response.data.name);
 //setMorning (Math.round (response.data.))
 //setAfternoon
@@ -70,7 +73,6 @@ function updateCity (event) {
   
 }
 
-
   
    
   return (
@@ -91,12 +93,15 @@ function updateCity (event) {
             <Main dayMax={dayMax} dayMin={dayMin} wind={wind} humidity={humidity}/>
           </th>
           <th className="weatherBody">
-            <Weather value={temp} cityMain={city}/>
+            <Weather value={temp} cityMain={city} icon={icon} desc={description}/>
           </th>
         </tr>
       </table>
       <hr />
       <Day morn={morning} after={afternoon} eve={evening} night={night} />
+      <br />
+      <Forecast />
     </div>
+   
   );
 }
