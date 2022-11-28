@@ -29,9 +29,6 @@ export default function App() {
   }
 
 
-
-
-
   function getForecast (coordinates) {
     console.log (coordinates);
     let apiKey = "3403a0d9be1275191d4d17e1391e7b13";
@@ -69,8 +66,7 @@ function defaultSearch (event) {
 function updateCity (event) {
   console.log (event.target.value);
   setCity(event.target.value);
-  defaultSearch (city);
-  
+    
 }
 
   
