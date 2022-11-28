@@ -7,7 +7,7 @@ import "./App.css";
 
 
 export default function App() {
-  let [city,setCity] =useState(``)
+  let [city,setCity] =useState(`Kyiv`);
   let [temp, setTemp] = useState (null);
   let [dayMax, setDayMax] = useState (null);
   let [dayMin, setDayMin] = useState (null);
