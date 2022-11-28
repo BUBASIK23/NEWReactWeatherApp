@@ -4,6 +4,7 @@
   background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
   font-family: "Montserrat", sans-serif;
   opacity: 85%;
+  margin: 5px;
 }
 
 table {
@@ -22,9 +23,13 @@ table {
 }
 
 
+.Search{
+  display: flex;
+}
+
 .form-control {
-  width: 300px;
-  height: 40px;
+  width: 350px !important;
+  height: 35px !important;
   margin: 5px !important;
   font-style: italic;
   font-size: 14px;
@@ -38,12 +43,13 @@ table {
 
 .btn {
   width: 150px;
-  height: 40px;
+  height: 35px;
   font-size: 14px;
-  background-color: #73abb7;
+  background-color: #73abb7 !important;
   color: #fdfcfb;
   border-radius: 5px;
   border-color: #73abb7;
+  margin: 5px !important;
 }
 
 .btn:hover {
@@ -64,5 +70,4 @@ img {
   text-align: center;
   padding-bottom: 15px;
 }
-
 

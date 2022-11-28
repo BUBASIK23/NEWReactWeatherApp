@@ -4,7 +4,7 @@ import Day from "./Day";
 import React, {useState} from "react";
 import axios from "axios";
 import "./App.css";
-import Forecast from "./Forecast";
+
 
 export default function App() {
   let [city,setCity] =useState(``)
@@ -66,9 +66,10 @@ function defaultSearch (event) {
 function updateCity (event) {
   console.log (event.target.value);
   setCity(event.target.value);
-    
+  
 }
 
+  
   
    
   return (
@@ -86,7 +87,7 @@ function updateCity (event) {
       <table>
         <tr>
           <th className="mainBody">
-            <Main dayMax={dayMax} dayMin={dayMin} wind={wind} humidity={humidity}/>
+            <Main dayMax={dayMax} dayMin={dayMin} wind={wind} humidity={humidity} cityMain={city} />
           </th>
           <th className="weatherBody">
             <Weather value={temp} cityMain={city} icon={icon} desc={description}/>
@@ -96,7 +97,9 @@ function updateCity (event) {
       <hr />
       <Day morn={morning} after={afternoon} eve={evening} night={night} />
       <br />
-      <Forecast />
+          <footer>
+          <a href="https://github.com/BUBASIK23/NEWReactWeatherApp" target="_blank"  rel="noreferrer" title="GitHub link" id="codeByMe">Open-source code</a> by Liubov Bieliaieva
+    </footer>
     </div>
    
   );
