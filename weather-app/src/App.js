@@ -25,7 +25,8 @@ export default function App() {
     setMorning (Math.round(response.data.daily[0].temp.morn));
     setAfternoon (Math.round(response.data.daily[0].temp.day));
     setEvening (Math.round(response.data.daily[0].temp.eve));
-    setNight (Math.round(response.data.daily[0].temp.night))
+    setNight (Math.round(response.data.daily[0].temp.night));
+    
   }
 
 
@@ -51,8 +52,10 @@ setIcon (`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.p
 //setEvening
 //setNight
 console.log(response.data);
-getForecast (response.data.coord)
+getForecast (response.data.coord);
+defaultSearch()
 }
+
 
 function defaultSearch (event) {
   event.preventDefault();
@@ -60,17 +63,17 @@ function defaultSearch (event) {
   let apiUrl=`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
   console.log (apiUrl);
   axios.get(apiUrl).then(showTemp);
- 
+  defaultSearch("Kyiv")
 }
+
+
 
 function updateCity (event) {
   console.log (event.target.value);
   setCity(event.target.value);
   
 }
-
-  
-  
+ 
    
   return (
     <div className="body">
