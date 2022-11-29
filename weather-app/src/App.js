@@ -20,9 +20,9 @@ export default function App() {
   let [night, setNight] = useState (null);
   let [icon, setIcon] = useState (null)
 
-  useEffect(() => {
+  /*useEffect(() => {
     defaultSearch()
-  },[])
+  },[])*/
 
   function displayForecast(response){
     console.log (response.data.daily);
