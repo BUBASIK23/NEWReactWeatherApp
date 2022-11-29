@@ -1,13 +1,13 @@
 import Main from "./Main";
 import Weather from "./Weather";
 import Day from "./Day";
-import React, {useState} from "react";
+import React, {useState, useEffect } from "react";
 import axios from "axios";
 import "./App.css";
 
 
 export default function App() {
-  let [city,setCity] =useState("Kyiv");
+  let [city,setCity] =useState(`Kyiv`);
   let [temp, setTemp] = useState (null);
   let [dayMax, setDayMax] = useState (null);
   let [dayMin, setDayMin] = useState (null);
@@ -19,6 +19,10 @@ export default function App() {
   let [evening, setEvening] = useState (null);
   let [night, setNight] = useState (null);
   let [icon, setIcon] = useState (null)
+
+  useEffect(() => {
+    defaultSearch()
+  },[])
 
   function displayForecast(response){
     console.log (response.data.daily);
@@ -46,13 +50,9 @@ setHumidity(Math.round(response.data.main.humidity));
 setWind(Math.round(response.data.wind.speed));
 setDescription(response.data.weather[0].description);
 setIcon (`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`)
-//setCity (response.data.name);
-//setMorning (Math.round (response.data.))
-//setAfternoon
-//setEvening
-//setNight
 console.log(response.data);
 getForecast (response.data.coord);
+defaultSearch()
 }
 
 function defaultSearch () {
@@ -64,7 +64,7 @@ function defaultSearch () {
 
 function changePlace (event) {
   event.preventDefault();
-  defaultSearch ({city})
+  defaultSearch()
 }
 
 
@@ -74,8 +74,7 @@ function updateCity (event) {
   setCity(event.target.value);
   
 }
-
-defaultSearch ("Kyiv")
+ 
    
   return (
     <div className="body">
