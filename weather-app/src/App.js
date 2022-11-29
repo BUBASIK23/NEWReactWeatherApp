@@ -56,14 +56,16 @@ getForecast (response.data.coord);
 defaultSearch()
 }
 
-
 function defaultSearch (event) {
-  event.preventDefault();
   let apiKey = "3403a0d9be1275191d4d17e1391e7b13"
   let apiUrl=`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
   console.log (apiUrl);
   axios.get(apiUrl).then(showTemp);
-  defaultSearch("Kyiv")
+}
+
+function changePlace (event) {
+  event.preventDefault();
+  defaultSearch ({city})
 }
 
 
@@ -73,12 +75,12 @@ function updateCity (event) {
   setCity(event.target.value);
   
 }
- 
+defaultSearch ({city})
    
   return (
     <div className="body">
       <span>
-    <form className="Search" onSubmit={defaultSearch}>
+    <form className="Search" onSubmit={changePlace}>
       <input
         type="search"
         placeholder="Type other place"
