@@ -7,7 +7,7 @@ import "./App.css";
 
 
 export default function App() {
-  let [city,setCity] =useState(`Kyiv`);
+  let [city,setCity] =useState("Kyiv");
   let [temp, setTemp] = useState (null);
   let [dayMax, setDayMax] = useState (null);
   let [dayMin, setDayMin] = useState (null);
@@ -53,10 +53,9 @@ setIcon (`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.p
 //setNight
 console.log(response.data);
 getForecast (response.data.coord);
-defaultSearch()
 }
 
-function defaultSearch (event) {
+function defaultSearch () {
   let apiKey = "3403a0d9be1275191d4d17e1391e7b13"
   let apiUrl=`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
   console.log (apiUrl);
@@ -75,7 +74,8 @@ function updateCity (event) {
   setCity(event.target.value);
   
 }
-defaultSearch ({city})
+
+defaultSearch ("Kyiv")
    
   return (
     <div className="body">
