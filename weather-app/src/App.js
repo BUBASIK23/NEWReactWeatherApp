@@ -19,10 +19,9 @@ export default function App() {
   let [evening, setEvening] = useState (null);
   let [night, setNight] = useState (null);
   let [icon, setIcon] = useState (null)
-
   useEffect(() => {
     defaultSearch()
-  },[]) // eslint-disable-line react-hooks/exhaustive-deps
+  },[])
 
   function displayForecast(response){
     console.log (response.data.daily);
@@ -36,7 +35,7 @@ export default function App() {
 
   function getForecast (coordinates) {
     console.log (coordinates);
-    let apiKey = "3403a0d9be1275191d4d17e1391e7b13";
+    let apiKey = "5293d8454b519c30f6f6331f38c85b4c";
     let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
     console.log (apiUrl);
     axios.get(apiUrl).then(displayForecast);
@@ -52,7 +51,6 @@ setDescription(response.data.weather[0].description);
 setIcon (`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`)
 console.log(response.data);
 getForecast (response.data.coord);
-defaultSearch()
 }
 
 function defaultSearch () {
@@ -72,17 +70,17 @@ function changePlace (event) {
 function updateCity (event) {
   console.log (event.target.value);
   setCity(event.target.value);
-  
-}
+  }
  
    
   return (
     <div className="body">
+      <div className="container canva">
       <span>
     <form className="Search" onSubmit={changePlace}>
       <input
         type="search"
-        placeholder="Type other place"
+        placeholder="Type other place..."
         className="form-control" onChange={updateCity}
       />
       <input type="submit" value="Search" className="btn" />
@@ -100,10 +98,12 @@ function updateCity (event) {
       </table>
       <hr />
       <Day morn={morning} after={afternoon} eve={evening} night={night} />
-      <br />
-          <footer>
-          <a href="https://github.com/BUBASIK23/NEWReactWeatherApp" target="_blank"  rel="noreferrer" title="GitHub link" id="codeByMe">Open-source code</a> by Liubov Bieliaieva
-    </footer>
+      
+      </div>
+         <footer>
+          This weather-app is {" "}<a href="https://github.com/BUBASIK23/NEWReactWeatherApp" target="_blank"  rel="noreferrer" title="GitHub link">open-sourced on GitHub {" "}</a>
+           and built by <a href="https://cheerful-taffy-49b22f.netlify.app/" target="_blank" rel="noreferrer">Lubov Belyaeva</a>
+         </footer>
     </div>
    
   );

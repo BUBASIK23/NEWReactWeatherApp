@@ -6,7 +6,8 @@ export default function Weather(props) {
     <div className="temp">
       <span className="value">{props.value}°C</span>
 
-      <img src={props.icon} width="150" alt={props.desc}/>
+      <img src={props.icon} width="100" alt={props.desc}/>
     </div>
+    
   );
 }

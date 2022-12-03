@@ -6,7 +6,7 @@ export default function Main(props) {
       
   return (
     <div className="Main">
-      <div className="Container">
+      <div className="container main">
         <h1>{props.cityMain}</h1>
         
         <p>
