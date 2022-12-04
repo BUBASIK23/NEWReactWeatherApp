@@ -14,10 +14,9 @@
 margin: 15px;
 }
 
-table {
-  width: 100%;
-  vertical-align: middle;
-}
+ul, li {list-style: none;
+  padding-left: 1px;}
+
 
 .mainBody {
   text-align: left;
@@ -29,6 +28,12 @@ table {
   padding-right: 40px;
 }
 
+p {margin-top: 5px;
+  margin-bottom: 10px;
+   font-size: 12px;
+   font-weight: 600;
+   text-align: center;
+}
 
 .Search{
   display: flex;
@@ -93,7 +98,11 @@ hr {
   padding-bottom: 15px;
 }
 
-
+table {
+  width: 100%;
+  vertical-align: middle;
+}
 
 footer {color: #894D75;
-font-size: 12px;}
+font-size: 12px;
+margin: 3px;}

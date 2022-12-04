@@ -1,6 +1,7 @@
 import Main from "./Main";
 import Weather from "./Weather";
 import Day from "./Day";
+import CurrentDate from "./CurrentDate";
 import React, {useState, useEffect } from "react";
 import axios from "axios";
 import "./App.css";
@@ -18,7 +19,8 @@ export default function App() {
   let [afternoon, setAfternoon]=useState (null);
   let [evening, setEvening] = useState (null);
   let [night, setNight] = useState (null);
-  let [icon, setIcon] = useState (null)
+  let [icon, setIcon] = useState (null);
+  let [today, setToday] = useState (null)
   useEffect(() => {
     defaultSearch()
   },[])
@@ -48,6 +50,7 @@ setDayMin (Math.round (response.data.main.temp_min));
 setHumidity(Math.round(response.data.main.humidity));
 setWind(Math.round(response.data.wind.speed));
 setDescription(response.data.weather[0].description);
+setToday (new Date(response.data.dt * 1000));
 setIcon (`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`)
 console.log(response.data);
 getForecast (response.data.coord);
@@ -75,7 +78,8 @@ function updateCity (event) {
    
   return (
     <div className="body">
-      <div className="container canva">
+            <div className="container canva">
+      <CurrentDate today={today}/>
       <span>
     <form className="Search" onSubmit={changePlace}>
       <input
