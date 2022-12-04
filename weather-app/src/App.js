@@ -23,7 +23,7 @@ export default function App() {
   let [today, setToday] = useState (null)
   useEffect(() => {
     defaultSearch()
-  },[])
+  },[]) // eslint-disable-line react-hooks/exhaustive-deps
 
   function displayForecast(response){
     console.log (response.data.daily);
