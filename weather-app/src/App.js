@@ -4,6 +4,7 @@ import Day from "./Day";
 import CurrentDate from "./CurrentDate";
 import React, {useState, useEffect } from "react";
 import axios from "axios";
+import 'bootstrap/dist/css/bootstrap.css';
 import "./App.css";
 
 
@@ -37,7 +38,7 @@ export default function App() {
 
   function getForecast (coordinates) {
     console.log (coordinates);
-    let apiKey = "5293d8454b519c30f6f6331f38c85b4c";
+    let apiKey = "3403a0d9be1275191d4d17e1391e7b13";
     let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
     console.log (apiUrl);
     axios.get(apiUrl).then(displayForecast);
@@ -50,7 +51,7 @@ setDayMin (Math.round (response.data.main.temp_min));
 setHumidity(Math.round(response.data.main.humidity));
 setWind(Math.round(response.data.wind.speed));
 setDescription(response.data.weather[0].description);
-setToday (new Date(response.data.dt * 1000));
+setToday (new Date());
 setIcon (`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`)
 console.log(response.data);
 getForecast (response.data.coord);
