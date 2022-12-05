@@ -1,6 +1,6 @@
 .body {
   display: block;
-  width: 650px;
+  max-width: 650px;
   font-family: 'Inter', sans-serif;
   margin: 5px auto;
   color: #ECE5EA;
@@ -78,9 +78,7 @@ font-size: 14px;}
 
 h1 {font-size: 38px;}
 
-img {
-  vertical-align: middle;
-}
+
 
 hr {
   height: 1px;

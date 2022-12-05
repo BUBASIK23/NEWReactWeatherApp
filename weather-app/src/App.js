@@ -96,7 +96,7 @@ function updateCity (event) {
         <div class="col-5">
         <Main dayMax={dayMax} dayMin={dayMin} wind={wind} humidity={humidity} cityMain={city} />
         </div>
-        <div className="col-6 text-center">
+        <div className="col-7 text-center align-middle">
         <Weather value={temp} cityMain={city} icon={icon} desc={description}/>
         </div>
         </div>
