@@ -8,14 +8,13 @@ export default function Main(props) {
       <div className="container main">
         <h1>{props.cityMain}</h1>
         
-        <ul>
-          <li>{" "}
-          DayMax {props.dayMax}°C DayMin {props.dayMin}°C
-        </li>
-        <li>
-          Wind {props.wind}km/h Humidity {props.humidity}%{" "}
-        </li>
-        </ul>
+        <div>
+        DayMax {props.dayMax}°C DayMin {props.dayMin}°C
+        </div>
+        <div>
+        Wind {props.wind}km/h Humidity {props.humidity}%{" "}
+        </div>
+  
       </div>
     </div>
   );

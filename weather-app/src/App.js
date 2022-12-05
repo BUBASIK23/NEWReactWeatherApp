@@ -80,7 +80,7 @@ function updateCity (event) {
   return (
     <div className="body">
             <div className="container canva">
-      <CurrentDate today={today}/>
+      <CurrentDate currentDate={today}/>
       <span>
     <form className="Search" onSubmit={changePlace}>
       <input
@@ -91,16 +91,16 @@ function updateCity (event) {
       <input type="submit" value="Search" className="btn" />
           </form>
   </span>
-      <table>
-        <tr>
-          <th className="mainBody">
-            <Main dayMax={dayMax} dayMin={dayMin} wind={wind} humidity={humidity} cityMain={city} />
-          </th>
-          <th className="weatherBody">
-            <Weather value={temp} cityMain={city} icon={icon} desc={description}/>
-          </th>
-        </tr>
-      </table>
+            <div className="container">
+        <div className="row">
+        <div class="col-5">
+        <Main dayMax={dayMax} dayMin={dayMin} wind={wind} humidity={humidity} cityMain={city} />
+        </div>
+        <div className="col-6 text-center">
+        <Weather value={temp} cityMain={city} icon={icon} desc={description}/>
+        </div>
+        </div>
+      </div>
       <hr />
       <Day morn={morning} after={afternoon} eve={evening} night={night} />
       

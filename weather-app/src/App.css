@@ -14,10 +14,6 @@
 margin: 15px;
 }
 
-ul, li {list-style: none;
-  padding-left: 1px;}
-
-
 .mainBody {
   text-align: left;
   vertical-align: middle;
@@ -99,10 +95,7 @@ hr {
   padding-bottom: 15px;
 }
 
-table {
-  width: 100%;
-  vertical-align: middle;
-}
+
 
 footer {color: #894D75;
 font-size: 12px;
