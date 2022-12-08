@@ -74,8 +74,7 @@ function changePlace (event) {
 
 
 function updateCity (event) {
-  console.log (event.target.value);
-  setCity(event.target.value);
+    setCity(event.target.value);
   }
  
    if (ready){
