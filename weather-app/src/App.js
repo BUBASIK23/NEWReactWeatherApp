@@ -9,6 +9,7 @@ import "./App.css";
 
 
 export default function App() {
+  const [ready, setReady] = useState(false);
   let [city,setCity] =useState(`Kyiv`);
   let [temp, setTemp] = useState (null);
   let [dayMax, setDayMax] = useState (null);
@@ -21,7 +22,7 @@ export default function App() {
   let [evening, setEvening] = useState (null);
   let [night, setNight] = useState (null);
   let [icon, setIcon] = useState (null);
-  let [today, setToday] = useState (null)
+  let [today, setToday] = useState ()
   useEffect(() => {
     defaultSearch()
   },[]) // eslint-disable-line react-hooks/exhaustive-deps
@@ -45,13 +46,14 @@ export default function App() {
   }  
 
 function showTemp (response) {
+  setReady(true);
 setTemp (Math.round(response.data.main.temp));
 setDayMax (Math.round (response.data.main.temp_max));
 setDayMin (Math.round (response.data.main.temp_min));
 setHumidity(Math.round(response.data.main.humidity));
 setWind(Math.round(response.data.wind.speed));
 setDescription(response.data.weather[0].description);
-setToday (new Date());
+setToday (new Date(response.data.dt*1000));
 setIcon (`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`)
 console.log(response.data);
 getForecast (response.data.coord);
@@ -76,7 +78,7 @@ function updateCity (event) {
   setCity(event.target.value);
   }
  
-   
+   if (ready){
   return (
     <div className="body">
             <div className="container canva">
@@ -111,5 +113,5 @@ function updateCity (event) {
          </footer>
     </div>
    
-  );
+  );}else {return <p> Loading...</p>}
 }
