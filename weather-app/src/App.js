@@ -8,33 +8,26 @@ import 'bootstrap/dist/css/bootstrap.css';
 import "./App.css";
 
 
-export default function App() {
-  const [ready, setReady] = useState(false);
-  let [city,setCity] =useState(`Kyiv`);
-  let [temp, setTemp] = useState (null);
-  let [dayMax, setDayMax] = useState (null);
-  let [dayMin, setDayMin] = useState (null);
-  let [humidity, setHumidity] = useState(null);
-  let [wind, setWind] = useState(null);
-  let [description, setDescription] = useState(null);
+export default function App(props) {
+  
+  let [city,setCity] =useState(props.defaultCity);
+  let [weather,setWeather]=useState ({ ready: false });
   let [morning, setMorning]= useState (null);
   let [afternoon, setAfternoon]=useState (null);
   let [evening, setEvening] = useState (null);
   let [night, setNight] = useState (null);
-  let [icon, setIcon] = useState (null);
-  let [today, setToday] = useState ()
+  
   useEffect(() => {
     defaultSearch()
   },[]) // eslint-disable-line react-hooks/exhaustive-deps
 
   function displayForecast(response){
-    console.log (response.data.daily);
+     console.log (response.data.daily);
     setMorning (Math.round(response.data.daily[0].temp.morn));
     setAfternoon (Math.round(response.data.daily[0].temp.day));
     setEvening (Math.round(response.data.daily[0].temp.eve));
     setNight (Math.round(response.data.daily[0].temp.night));
-    
-  }
+      }
 
 
   function getForecast (coordinates) {
@@ -45,19 +38,23 @@ export default function App() {
     axios.get(apiUrl).then(displayForecast);
   }  
 
-function showTemp (response) {
-  setReady(true);
-setTemp (Math.round(response.data.main.temp));
-setDayMax (Math.round (response.data.main.temp_max));
-setDayMin (Math.round (response.data.main.temp_min));
-setHumidity(Math.round(response.data.main.humidity));
-setWind(Math.round(response.data.wind.speed));
-setDescription(response.data.weather[0].description);
-setToday (new Date(response.data.dt*1000));
-setIcon (`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`)
-console.log(response.data);
-getForecast (response.data.coord);
-}
+  function showTemp (response) {
+    setWeather({
+      ready: true,
+      temp: Math.round(response.data.main.temp),
+      humidity: Math.round(response.data.main.humidity),
+      today: new Date(response.data.dt * 1000),
+      description: response.data.weather[0].description,
+      icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+      wind: Math.round(response.data.wind.speed),
+      dayMax: Math.round (response.data.main.temp_max),
+      dayMin: Math.round (response.data.main.temp_min),
+      city: response.data.name,
+    });
+    getForecast (response.data.coord);
+  }
+
+
 
 function defaultSearch () {
   let apiKey = "3403a0d9be1275191d4d17e1391e7b13"
@@ -72,16 +69,15 @@ function changePlace (event) {
 }
 
 
-
 function updateCity (event) {
     setCity(event.target.value);
   }
  
-   if (ready){
+   if (weather.ready){
   return (
     <div className="body">
             <div className="container canva">
-      <CurrentDate currentDate={today}/>
+      <CurrentDate currentDate={weather.today}/>
       <span>
     <form className="Search" onSubmit={changePlace}>
       <input
@@ -94,11 +90,11 @@ function updateCity (event) {
   </span>
             <div className="container">
         <div className="row">
-        <div class="col-5">
-        <Main dayMax={dayMax} dayMin={dayMin} wind={wind} humidity={humidity} cityMain={city} />
+        <div className="col-5">
+        <Main dayMax={weather.dayMax} dayMin={weather.dayMin} wind={weather.wind} humidity={weather.humidity} cityMain={weather.city} />
         </div>
         <div className="col-7 text-center align-middle">
-        <Weather value={temp} cityMain={city} icon={icon} desc={description}/>
+        <Weather value={weather.temp} icon={weather.icon} desc={weather.description}/>
         </div>
         </div>
       </div>
