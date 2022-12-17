@@ -27,7 +27,13 @@ export default function App(props) {
       after: Math.round(response.data.daily[0].temp.day),
       eve: Math.round(response.data.daily[0].temp.eve),
       night: Math.round(response.data.daily[0].temp.night),
-      
+      forecastDate: response.data.daily[0].dt,
+      forcastDay: Math.round (response.data.daily[0].temp.day),
+      forcastNight: Math.round (response.data.daily[0].temp.night),
+      forecastIcon:  `http://openweathermap.org/img/wn/${response.data.daily[0].icon}@2x.png`,
+      forecastWind: Math.round (response.data.daily[0].wind_speed),
+      forecastHumidity: Math.round (response.data.daily[0].humidity),
+      forecastDesc: response.data.daily[0].weather[0].description,
     })
      
       }
@@ -104,7 +110,7 @@ function updateCity (event) {
       <hr />
       <Day morn={forecast.morn} after={forecast.after} eve={forecast.eve} night={forecast.night} />
       <br />
-      <Forecast />
+      <Forecast fdate={forecast.forecastDate} fday={forecast.forcastDay} fnight={forecast.forcastNight} ficon={forecast.forecastIcon} fwind={forecast.forecastWind} fhum={forecast.forecastHumidity} fdesc={forecast.forecastDesc}/>
       </div>
          <footer>
           This weather-app is {" "}<a href="https://github.com/BUBASIK23/NEWReactWeatherApp" target="_blank"  rel="noreferrer" title="GitHub link">open-sourced on GitHub {" "}</a>

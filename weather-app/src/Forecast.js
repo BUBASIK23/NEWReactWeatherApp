@@ -1,6 +1,21 @@
 import React from "react";
 
-export default function Forecast () {
+export default function Forecast (props) {
+
+function day () {
+    let date = new Date (props.fdate*1000);
+    let day = date.getDay();
+    let days= ["Sun",
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat"];
+
+    return days[day];
+}
+
     return <div className="Forecast">
         <div className="accordion accordion-flush">
   <div className="accordion-item">
@@ -22,12 +37,14 @@ export default function Forecast () {
     <div className="col header">Humidity</div>
     <hr />
     <div className="w-100"></div>
-    <div className="col fday">Sun</div>
-    <div className="col winfo">-3°C</div>
-    <div className="col winfo">-5°C</div>
-    <div className="col winfo">icon</div>
-    <div className="col winfo">5km/h</div>
-    <div className="col winfo">50%</div>
+    <div className="col fday">{day()}</div>
+    <div className="col winfo">{props.fday}°C</div>
+    <div className="col winfo">{props.fnight}°C</div>
+    <div className="col winfo">
+    <img src={props.ficon} width="50" alt={props.fdesc}/>
+    </div>
+    <div className="col winfo">{props.fwind}km/h</div>
+    <div className="col winfo">{props.fhum}%</div>
 
 </div>
 
