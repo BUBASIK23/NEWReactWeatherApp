@@ -2,7 +2,7 @@ import Main from "./Main";
 import Weather from "./Weather";
 import Day from "./Day";
 import CurrentDate from "./CurrentDate";
-import Forecast from "./Forecast";
+import ForecastInfo from "./ForecastInfo";
 import React, {useState, useEffect } from "react";
 import axios from "axios";
 
@@ -15,26 +15,23 @@ export default function App(props) {
   
   let [city,setCity] =useState(props.defaultCity);
   let [weather,setWeather]=useState ({ ready: false });
-  let [forecast, setForecast] =useState ({});
+  let [perDay, setPerDay] =useState ({});
+  let [forecast, setForecast] = useState (null)
+  let [load, setLoad] = useState (false);
    
   useEffect(() => {
     defaultSearch()
   },[]) // eslint-disable-line react-hooks/exhaustive-deps
 
   function displayForecast(response){
-    setForecast ({
+    setPerDay ({
       morn: Math.round(response.data.daily[0].temp.morn),
       after: Math.round(response.data.daily[0].temp.day),
       eve: Math.round(response.data.daily[0].temp.eve),
-      night: Math.round(response.data.daily[0].temp.night),
-      forecastDate: response.data.daily[0].dt,
-      forcastDay: Math.round (response.data.daily[0].temp.day),
-      forcastNight: Math.round (response.data.daily[0].temp.night),
-      forecastIcon:  `http://openweathermap.org/img/wn/${response.data.daily[0].icon}@2x.png`,
-      forecastWind: Math.round (response.data.daily[0].wind_speed),
-      forecastHumidity: Math.round (response.data.daily[0].humidity),
-      forecastDesc: response.data.daily[0].weather[0].description,
-    })
+      night: Math.round(response.data.daily[0].temp.night)});
+      setLoad (true);
+    setForecast (response.data.daily);
+    
      
       }
 
@@ -82,7 +79,7 @@ function updateCity (event) {
     setCity(event.target.value);
   }
  
-   if (weather.ready){
+   if (weather.ready && load){
   return (
     <div className="body">
             <div className="container canva">
@@ -108,9 +105,42 @@ function updateCity (event) {
         </div>
       </div>
       <hr />
-      <Day morn={forecast.morn} after={forecast.after} eve={forecast.eve} night={forecast.night} />
+      <Day morn={perDay.morn} after={perDay.after} eve={perDay.eve} night={perDay.night} />
       <br />
-      <Forecast fdate={forecast.forecastDate} fday={forecast.forcastDay} fnight={forecast.forcastNight} ficon={forecast.forecastIcon} fwind={forecast.forecastWind} fhum={forecast.forecastHumidity} fdesc={forecast.forecastDesc}/>
+      <div className="Forecast">
+    <div className="accordion accordion-flush">
+    <div className="accordion-item">
+    <h2 className="accordion-header" id="flush-headingOne">
+      <button className="accordion-button collapsed"  type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+        <div className="message"><em>Next week forecast</em>
+          </div>
+      </button>
+    </h2>
+    <div id="flush-collapseOne" className="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+      <div className="accordion-body"> 
+        
+<div className="row weather-forecast">
+    <div className="col header">#</div>
+    <div className="col header">Day</div>
+    <div className="col header">Night</div>
+    <div className="col header">Weather</div>
+    <div className="col header">Wind</div>
+    <div className="col header">Humidity</div>
+    <hr />
+    <div className="w-100"></div>
+    {forecast.map (function (dailyforecast, index){
+        return (<ForecastInfo data={forecast[0]}/>)
+      })}
+    
+
+</div>
+
+    </div>
+    </div>
+  </div>
+</div>
+    </div>
+             
       </div>
          <footer>
           This weather-app is {" "}<a href="https://github.com/BUBASIK23/NEWReactWeatherApp" target="_blank"  rel="noreferrer" title="GitHub link">open-sourced on GitHub {" "}</a>
