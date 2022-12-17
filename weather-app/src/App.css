@@ -81,11 +81,7 @@ h1 {font-size: 38px;}
 
 
 hr {
-  height: 1px;
-  background-color: #894D75;
-  border: none;
-  margin: 10px;
-
+  color: #5E013F  !important;
 }
 
 .dayTemp {
@@ -94,6 +90,20 @@ hr {
 }
 
 
+.accordion-button {
+  height: 15px;
+  font-size: 12px !important;
+  background-color: #5E013F !important;
+  color: #ebe0e7 !important;
+}
+
+.collapsed {
+  color: #ebe0e7 !important
+}
+
+.weather-forecast {
+  text-align: center;
+}
 
 footer {color: #894D75;
 font-size: 12px;

@@ -2,9 +2,12 @@ import Main from "./Main";
 import Weather from "./Weather";
 import Day from "./Day";
 import CurrentDate from "./CurrentDate";
+import Forecast from "./Forecast";
 import React, {useState, useEffect } from "react";
 import axios from "axios";
+
 import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap.js';
 import "./App.css";
 
 
@@ -100,7 +103,8 @@ function updateCity (event) {
       </div>
       <hr />
       <Day morn={morning} after={afternoon} eve={evening} night={night} />
-      
+      <br />
+      <Forecast />
       </div>
          <footer>
           This weather-app is {" "}<a href="https://github.com/BUBASIK23/NEWReactWeatherApp" target="_blank"  rel="noreferrer" title="GitHub link">open-sourced on GitHub {" "}</a>
