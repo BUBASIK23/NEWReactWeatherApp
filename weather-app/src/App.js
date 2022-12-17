@@ -15,21 +15,21 @@ export default function App(props) {
   
   let [city,setCity] =useState(props.defaultCity);
   let [weather,setWeather]=useState ({ ready: false });
-  let [morning, setMorning]= useState (null);
-  let [afternoon, setAfternoon]=useState (null);
-  let [evening, setEvening] = useState (null);
-  let [night, setNight] = useState (null);
-  
+  let [forecast, setForecast] =useState ({});
+   
   useEffect(() => {
     defaultSearch()
   },[]) // eslint-disable-line react-hooks/exhaustive-deps
 
   function displayForecast(response){
-     console.log (response.data.daily);
-    setMorning (Math.round(response.data.daily[0].temp.morn));
-    setAfternoon (Math.round(response.data.daily[0].temp.day));
-    setEvening (Math.round(response.data.daily[0].temp.eve));
-    setNight (Math.round(response.data.daily[0].temp.night));
+    setForecast ({
+      morn: Math.round(response.data.daily[0].temp.morn),
+      after: Math.round(response.data.daily[0].temp.day),
+      eve: Math.round(response.data.daily[0].temp.eve),
+      night: Math.round(response.data.daily[0].temp.night),
+      
+    })
+     
       }
 
 
@@ -102,7 +102,7 @@ function updateCity (event) {
         </div>
       </div>
       <hr />
-      <Day morn={morning} after={afternoon} eve={evening} night={night} />
+      <Day morn={forecast.morn} after={forecast.after} eve={forecast.eve} night={forecast.night} />
       <br />
       <Forecast />
       </div>
