@@ -14,20 +14,20 @@ export default function Forecast () {
       <div className="accordion-body"> 
         
 <div className="row weather-forecast">
-    <div className="col">#</div>
-    <div className="col">Day</div>
-    <div className="col">Night</div>
-    <div className="col">Weather</div>
-    <div className="col">Wind</div>
-    <div className="col">Humidity</div>
+    <div className="col header">#</div>
+    <div className="col header">Day</div>
+    <div className="col header">Night</div>
+    <div className="col header">Weather</div>
+    <div className="col header">Wind</div>
+    <div className="col header">Humidity</div>
     <hr />
     <div className="w-100"></div>
-    <div className="col">Sun</div>
-    <div className="col">-3°C</div>
-    <div className="col">-5°C</div>
-    <div className="col">icon</div>
-    <div className="col">5km/h</div>
-    <div className="col">50%</div>
+    <div className="col fday">Sun</div>
+    <div className="col winfo">-3°C</div>
+    <div className="col winfo">-5°C</div>
+    <div className="col winfo">icon</div>
+    <div className="col winfo">5km/h</div>
+    <div className="col winfo">50%</div>
 
 </div>
 

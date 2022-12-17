@@ -101,6 +101,19 @@ hr {
   color: #ebe0e7 !important
 }
 
+.accordion-body {
+  background-color: rgb(214, 185, 204) !important;
+}
+
+.header, .fday {
+  font-weight: 600 !important;
+}
+.header, .winfo, .fday{
+  color: #ECE5EA !important;
+  
+}
+
+
 .weather-forecast {
   text-align: center;
 }
