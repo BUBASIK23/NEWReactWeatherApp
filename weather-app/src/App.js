@@ -23,6 +23,8 @@ export default function App(props) {
     defaultSearch()
   },[]) // eslint-disable-line react-hooks/exhaustive-deps
 
+ 
+
   function displayForecast(response){
     setPerDay ({
       morn: Math.round(response.data.daily[0].temp.morn),
@@ -128,8 +130,12 @@ function updateCity (event) {
     <div className="col header">Humidity</div>
     <hr />
     <div className="w-100"></div>
-    {forecast.map (function (dailyforecast, index){
-        return (<ForecastInfo data={forecast[0]}/>)
+    {forecast.map (function (dailyforecast, index) {
+      if (index>0&&index<8) {
+        return (
+        <div key={index}>
+          <ForecastInfo data={dailyforecast}/>
+          </div>);}
       })}
     
 
