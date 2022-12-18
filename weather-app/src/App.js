@@ -122,12 +122,12 @@ function updateCity (event) {
       <div className="accordion-body"> 
         
 <div className="row weather-forecast">
-    <div className="col header">#</div>
-    <div className="col header">Day</div>
-    <div className="col header">Night</div>
-    <div className="col header">Weather</div>
-    <div className="col header">Wind</div>
-    <div className="col header">Humidity</div>
+    <div className="col-2 header">#</div>
+    <div className="col-2 header">Day</div>
+    <div className="col-2 header">Night</div>
+    <div className="col-2 header">Icon</div>
+    <div className="col-2 header">Wind</div>
+    <div className="col-2 header">Hum</div>
     <hr />
     <div className="w-100"></div>
         {// eslint-disable-next-line
