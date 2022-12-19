@@ -7,7 +7,7 @@ export default function Weather(props) {
       
       <span className="value">{props.value}°C</span>
 
-      <img className="img-fluid" src={props.icon} width="100" alt={props.desc}/>
+      <img className="img-fluid" src={props.icon} alt={props.desc}/>
     </div>
     
   );
