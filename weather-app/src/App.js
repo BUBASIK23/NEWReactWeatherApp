@@ -97,7 +97,7 @@ function updateCity (event) {
           </form>
   </span>
             <div className="container">
-        <div className="row">
+        <div className="row align-items-center">
         <div className="col-5">
         <Main dayMax={weather.dayMax} dayMin={weather.dayMin} wind={weather.wind} humidity={weather.humidity} cityMain={weather.city} />
         </div>

@@ -94,6 +94,7 @@ h1 {font-size: 38px;}
 
 hr {
   color: var(--elements-color)  !important;
+  margin: 0 !important;
 }
 
 .forecastInfo {
@@ -110,27 +111,32 @@ vertical-align: middle !important;
   height: 15px;
   font-size: 12px !important;
   background-color: var(--elements-color) !important;
+  opacity: 60%;
   color: var(--text-color) !important;
+  
 
 }
 
 .collapsed {
-  color: var(--text-color) !important
+  color: var(--text-color) !important;
+  text-align: center !important;
 }
 
 .accordion-body {
   background-color: var(--primary-color) !important;
+  
 }
 
 .header, .fday {
   font-weight: 600 !important;
 }
+
+
 .header, .winfo, .fday{
   color: var(--text-color) !important;
-  text-align: center;
-  vertical-align: middle;
+  text-align: center !important;
   
-}
+  }
 
 .weather-forecast {
   text-align: center;
